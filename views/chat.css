@@ -1,4 +1,4 @@
-/* * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -8,57 +8,72 @@ body {
   font: 13px;
 }
 
+.main-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  color: blueviolet;
+  min-width: 40%;
+}
+
 .form-div {
+  background-color: antiquewhite;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
 }
 
 #form-nickname {
-  background: black;
+  display: flex;
+  flex-direction: row;
   bottom: 0;
-  margin-right: 30%;
   padding: 3px;
-  position: fixed;
-  width: 34%;
+  max-width: 255px;
+  min-width: 242px;
 }
 
 #nickname-input {
   border: 0;
   margin-right: 0.5%;
   padding: 10px;
-  width: 70%;
+  width: 80%;
 }
 
 #form-nickname-button {
   border: none;
-  background: rgb(130, 224, 255);
   cursor: pointer;
   padding: 10px;
-  width: 28%;
+  width: 40%;
+}
+
+.form-div-msg {
+  background-color: antiquewhite;
+  padding: 1em;
+  margin-top: 1em;
 }
 
 #form-message {
-  background: black;
-  bottom: 0;
-  margin-left: 35%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
   padding: 3px;
-  position: fixed;
-  width: 66%;
 }
 
 .form-message-input {
   border: 0;
   margin-right: 0.5%;
   padding: 10px;
-  width: 78%;
+  min-width: 180%;
 }
 
 #form-message-button {
-  background: rgb(130, 224, 255);
   border: none;
   cursor: pointer;
   padding: 10px;
-  width: 20%;
+  width: 100%;
 }
 
 #messages {
@@ -73,4 +88,4 @@ body {
 
 #messages li:nth-child( odd ) {
   background: #eee;
-} */
+}
