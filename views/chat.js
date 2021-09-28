@@ -5,7 +5,8 @@ socket.emit('FetchChatHistory');
 let actuallyNick = '';
 
 const saveButton = document.querySelector('#form-nickname-button');
-saveButton.addEventListener('click', () => {
+saveButton.addEventListener('click', (e) => {
+  e.preventDefault();
   const newNickName = document.querySelector('#nickname-input');
   socket.emit('changeNick', newNickName.value);
   newNickName.value = '';
@@ -26,14 +27,55 @@ socket.on('onlineUsers', ({ users, arrayUsers }) => {
   });
 });
 
+const formNickname = document.querySelector('#form-nickname');
+formNickname.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    console.log(e.keyCode);
+  }
+});
+
+const formMessage = document.querySelector('#form-message');
+formMessage.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    const chatMessage = document.querySelector('#message');
+    socket.emit('message', { chatMessage: chatMessage.value, nickname: actuallyNick });
+  
+    chatMessage.value = '';
+    e.preventDefault();
+    return false;
+  }
+});
+
 const sendButton = document.querySelector('#form-message-button');
-sendButton.addEventListener('click', () => {
+sendButton.addEventListener('click', (e) => {
+  e.preventDefault();
   const chatMessage = document.querySelector('#message');
   socket.emit('message', { chatMessage: chatMessage.value, nickname: actuallyNick });
 
   chatMessage.value = '';
+  e.preventDefault();
   return false;
-});
+}, false);
+
+// const sendInput = document.querySelector('#message');
+// sendInput.addEventListener('keypress', (e) => {
+//   e.preventDefault();
+//   if (e.key === 'Enter') {
+//     const chatMessage = document.querySelector('#message');
+//     socket.emit('message', { chatMessage: chatMessage.value, nickname: actuallyNick });
+
+//     chatMessage.value = '';
+//     return false;
+//   }
+// });
 
 const createMessage = (message) => {
   const menssagesUl = document.querySelector('#messages');
