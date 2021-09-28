@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3003;
 
 const io = require('socket.io')(http, {
   cors: {
-    origin: 'https://web-chat-omega.vercel.app/',
+    origin: 'https://matheus-web-chat.herokuapp.com/',
     methods: ['GET', 'POST'],
   },
 });
